@@ -17,17 +17,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	UserDetailsService userDetailsService;
 	
-	 @Bean
-	    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-	        return new BCryptPasswordEncoder();
-	    }
 	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-        .csrf().disable()
-                .authorizeRequests()
-                    .anyRequest().authenticated();
+       
+        http.csrf().disable().httpBasic();
     }
     
     @Autowired
